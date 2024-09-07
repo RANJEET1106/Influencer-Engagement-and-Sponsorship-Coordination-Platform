@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Influencer</title>
+</head>
+<body>
+    <div>
+        <h1>Influencer Profile</h1>
+        <p>Name: {{ influencer.name }}</p>
+        <p>Username: {{ username }}</p> 
+        <p>Category: {{ influencer.category }}</p>
+        <p>Niche: {{ influencer.niche }}</p>
+        <p>YouTube Followers: {{ influencer.ytfollow }}</p>
+        <p>Instagram Followers: {{ influencer.instafollow }}</p>
+        <p>Twitter Followers: {{ influencer.twitterfollow }}</p>
+        <p>Average Cost: {{ influencer.avgcost }}</p>
+        <p>Count: {{ influencer.count }}</p>
+        <br>
+        
+        <a href="/sponsor/find" >Go Back</a>
+        
+        <a href="/sponsor/influencer/ad_request/create/{{ influencer.id }}" >Put Request</a>
+    </div>
+</body>
+</html>

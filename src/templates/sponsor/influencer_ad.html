@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Requestt</title>
+</head>
+
+<body>
+    <div>
+        <h1>Influencer Profile</h1>
+        <p>
+            Name: {{ influencer.name }}
+            Username: {{ username }}
+            <br>
+            Category: {{ influencer.category }}
+            Niche: {{ influencer.niche }}
+            <br>
+            Youtube Link: {{influencer.ytlink}}
+            YouTube Followers: {{ influencer.ytfollow }}
+            <br>
+            Instagram Link: {{influencer.instalink}}
+            Instagram Followers: {{ influencer.instafollow }}
+            <br>
+            Twitter Link: {{influencer.twitterlink}}
+            Twitter Followers: {{ influencer.twitterfollow }}
+            <br>
+            Average Cost: {{ influencer.avgcost }}
+            Count: {{ influencer.count }}
+            <br>
+    </div>
+    <div>
+        <h2>Select the campaign</h2>
+        <form action="/sponsor/influencer/ad_request/create/{{influencer.id}}" method="POST" id="type_filter">
+
+            <div>
+                <input type="text" name="search" placeholder="Search by name" value="{{search}}">
+            </div>
+
+            <label for="status">Status:</label>
+            <select name="status">
+                <option value="all" {% if status=='all' %}selected{% endif %}>All Campaigns</option>
+                <option value="current" {% if status=='current' %}selected{% endif %}>Ongoing</option>
+                <option value="past" {% if status=='past' %}selected{% endif %}>Past Campaigns</option>
+            </select>
+
+            <label for="visibility">Visibility:</label>
+            <select name="visibility">
+                <option value="all" {% if visibility=='all' %}selected{% endif %}>Any</option>
+                <option value="private" {% if visibility=='private' %}selected{% endif %}>Private</option>
+                <option value="public" {% if visibility=='public' %}selected{% endif %}>Public</option>
+            </select>
+<!-- 
+            <label for="flag">Flag Status:</label>
+            <select name="flag">
+                <option value="all" {% if flag=='all' %}selected{% endif %}>Any</option>
+                <option value="flagged" {% if flag=='flagged' %}selected{% endif %}>Flagged</option>
+                <option value="none" {% if flag=='none' %}selected{% endif %}>None</option>
+            </select> -->
+
+            <input type="submit" value="Submit">
+        </form>
+        <div>
+            <ul>
+                {% for campaign in campaigns %}
+                <div>
+                    <p>ID : {{campaign.id}} Name : {{campaign.name}}</p>
+                    <p>Discription : {{campaign.description}}</p>
+                    <p>Start Date : {{campaign.start_date}} End Date : {{campaign.end_date}}</p>
+                    <p>Budget : {{campaign.budget}} Visibility : {{campaign.visibility}}</p>
+                    <p>Catagory : {{campaign.catagory}} Niche : {{campaign.niche}}</p>
+                    <p>
+                        <a href="/sponsor/find">Go Back</a>
+                        <a href="/sponsor/ad_request/create/{{influencer.id}}/{{campaign.id}}">Select</a>           
+                    </p>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

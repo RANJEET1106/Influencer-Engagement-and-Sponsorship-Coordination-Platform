@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <a href="/influencer/dashboard">Dashboard</a>
+        <a href="/influencer/find">Campaigns</a>
+        <a href="/influencer/ad_request">Ad Request</a>
+        <a href="/influencer/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1>Welcome {{user.username}}</h1>
+    <p>
+        Total Balance = {{influencer.totalcost}}<br>
+        No of Accepted Ad Requests : {{influencer.count}}
+    </p>
+
+    <div>
+        <h4>Ad Requests</h4>
+        {% for add in ad_requests %}
+        <div>
+            <p>{{add[1]}} | {{add[2]}}  <a href="/influencer/ad_request/view/{{add[0]}}">View</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

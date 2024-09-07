@@ -1,0 +1,45 @@
+<!-- campaigns.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns</title>
+</head>
+<body>
+    <div>
+        <a href="/influencer/dashboard">Dashboard</a>
+        <a href="/influencer/find">Campaigns</a>
+        <a href="/influencer/ad_request">Ad Request</a>
+        <a href="/influencer/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div>
+        <h1>Campaigns</h1> 
+    </div>
+    <form action="/influencer/find" method="POST" id="type_filter">
+
+        <div>
+            <input type="text" name="search" placeholder="Search by name" value="{{search}}">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <div>
+        <ul>
+            {% for campaign in campaigns %}
+            <div>
+                <p>ID : {{campaign.id}}  Name : {{campaign.name}}</p> 
+                <p>Discription : {{campaign.description}}</p>
+                <p>Start Date : {{campaign.start_date}}  End Date : {{campaign.end_date}}</p>
+                <p>Catagory : {{campaign.catagory}}  Niche : {{campaign.niche}}</p>
+                <p>
+                    <a href="/influencer/ad_request/create/{{campaign.id}}">Create Ad Request</a>
+                </p>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

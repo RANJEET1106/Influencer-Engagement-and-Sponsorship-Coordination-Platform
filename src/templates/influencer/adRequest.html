@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Ad Request</title>
+</head>
+
+<body>
+    <h1>Submit Ad Request</h1>
+    <form action="/influencer/ad_request/create/{{campaign_id}}" method="POST">
+        <label for="campaign_id">Campaign ID:</label>
+        <input type="number" id="campaign_id" name="campaign_id" value="{{campaign_id}}" disabled><br><br>
+
+        <label for="influencer_id">Influencer ID:</label>
+        <input type="number" id="influencer_id" name="influencer_id" value="{{influencer_id}}" disabled><br><br>
+
+        <label for="messages">Messages:</label><br>
+        <textarea id="messages" name="messages" rows="4" cols="50"></textarea><br><br>
+
+        <label for="requirements">Requirements:</label><br>
+        <textarea id="requirements" name="requirements" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="payment_amount">Payment Amount:</label>
+        <input type="number" id="payment_amount" name="payment_amount" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

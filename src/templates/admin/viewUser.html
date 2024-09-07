@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% if influencer %}
+        <div>
+            <h1>Influencer Profile</h1>
+            <p>Name: {{ influencer.name }}</p>
+            <p>Username: {{ user.username }}</p>
+            <p>Category: {{ influencer.category }}</p>
+            <p>Niche: {{ influencer.niche }}</p>
+            <p>YouTube Followers: {{ influencer.ytfollow }}</p>
+            <p>Instagram Followers: {{ influencer.instafollow }}</p>
+            <p>Twitter Followers: {{ influencer.twitterfollow }}</p>
+            <p>Average Cost: {{ influencer.avgcost }}</p>
+            <p>Count: {{ influencer.count }}</p>
+            <br>
+        </div>
+    {% elif sponsor %}
+        <div>
+            <h1>Sponsor Profile</h1>
+            <p>Name: {{sponsor.name}}</p>
+            <p>Campany Name: {{sponsor.companyname}}</p>
+            <p>Website: {{sponsor.website}}</p>
+        </div>
+    {% endif %}
+
+    {% if user.flag=='False' %}
+        <a href="/admin/user/flag/{{user.id}}">Flag</a>
+        <a href="/admin/dashboard">Go Back</a>
+    {% elif user.flag=='True' %}
+        <a href="/admin/user/flag/{{user.id}}">Unflag</a>
+        <a href="/admin/user/remove/{{user.id}}">Remove</a>
+        <a href="/admin/dashboard">Go Back</a>
+    {% endif %}
+
+</body>
+
+</html>

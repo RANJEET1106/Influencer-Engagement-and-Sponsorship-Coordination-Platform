@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+</head>
+
+<body>
+    <h1>Registration</h1>
+    <form action="/register" method="POST" id="reginfluencer">
+        <div>
+            <p>Register As : </p>
+            <select name="filter">
+                <option value="influencer">Influencer</option>
+                <option value="sponsor">Sponsor</option>
+            </select>
+        </div>
+        <div>
+            <input type="text" name="username" placeholder="Create Your Unique Username" required>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Enter Strong Password" required />
+        </div>
+        <div>
+            <input type="password" name="repassword" placeholder="Confirm Your Password" required />
+        </div>
+        {% if error%}
+        <p><strong>{{error}}</strong></p>
+        {% endif%}
+        <div>
+            <a href="/">Go Back</a>
+            <input type="submit" value="Next" />
+        </div>
+    </form>
+</body>
+
+</html>

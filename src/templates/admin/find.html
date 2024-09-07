@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find</title>
+</head>
+
+<body>
+    <header>
+        <a href="/admin/dashboard" >Info</a>
+        <a href="/admin/find">Find</a>
+        <a href="/admin/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </header>
+    <form action="/admin/find" method="POST" id="type_filter">
+
+        <div>
+            <input type="text" name="search" placeholder="Search by name" value="{{search}}">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <div>
+        <div>
+            {% for campaign in campaigns %}
+            <p>
+                {{ campaign.id }} | {{ campaign.name }}
+                <a href="/admin/campaign/view/{{campaign.id}}">View</a>
+                <a href="/admin/campaign/flag/{{campaign.id}}">Flag</a>
+            </p>
+            {% endfor %}
+        </div>
+        <div>
+            {% for user in users %}
+            <tr>
+                <p>
+                    {{ user.id }} | {{ user.username }}
+                    <a href="/admin/user/view/{{user.id}}">View</a>
+                    <a href="/admin/user/flag/{{user.id}}">flag</a>
+                </p>
+                {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

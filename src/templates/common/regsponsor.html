@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<body>
+    <div>
+        <h1>Sponsor Registration</h1>
+        <form action="/regsponsor" method="POST" id="regsponsor">
+            <div>
+                <input type="text" name="username" value="{{username}}" required />
+            </div>
+            <div>
+                <input type="password" name="password" value="{{password}}" required />
+            </div>
+            <div>
+                <input type="password" name="repassword" value="{{repassword}}" required />
+            </div>
+            <div>
+                <input type="text" name="company" placeholder="Enter Name of The Company" required />
+            </div>
+            <div>
+                <input type="text" name="website" placeholder="Enter The Website Of The Company"/>
+            </div>
+            {% if error%}
+            <p><strong>{{error}}</strong></p>
+            {% endif%}
+            <div>
+                <a href="\register">Go Back</a>
+                <input type="submit" value="Submit"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

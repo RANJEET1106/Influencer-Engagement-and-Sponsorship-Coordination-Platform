@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Campaign</title>
+</head>
+<body>
+    <div>
+        <h1>View Campaign</h1>
+    </div>
+    <div>
+        <p>ID: {{ campaign.id }}</p>
+        <p>Name: {{ campaign.name }}</p>
+        <p>Description: {{ campaign.description }}</p>
+        <p>Start Date: {{ campaign.start_date }}</p>
+        <p>End Date: {{ campaign.end_date }}</p>
+        <p>Budget: {{ campaign.budget }}</p>
+        <p>Remaining Budget: {{ campaign.remaining_budget }}</p>
+        <p>Visibility: {{ campaign.visibility }}</p>
+        <p>Flag: {{ campaign.flag }}</p>
+    </div>
+    <div>
+        <h1>Influencers Assigned</h1>
+    </div>
+    <div>
+        {% for influencer in influencers %}
+        <div>
+            <p>
+                ID: {{ influencer.id }} | Name: {{influencer.name}}
+                <a href="/sponsor/influencer/view/{{influencer.id}}">View</a>
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <a href="/sponsor/campaign/ad_request/create/{{campaign.id}}">Create Ad Request</a>
+        <a href="/sponsor/campaign/edit/{{campaign.id}}">Edit Campaign</a>
+        <a href="/sponsor/campaign/delete/{{campaign.id}}">Delete Campaign</a>
+    </div>
+</body>
+</html>

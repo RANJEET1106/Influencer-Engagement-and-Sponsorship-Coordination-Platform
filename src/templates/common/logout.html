@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logout</title>
+</head>
+<body>
+    <div class="logout">
+        <div class="logo"></div>
+        <div class="form">
+            <form action="/logout" method="POST" id="logout">
+                <label for="logout">Are you confirm to log out ?</label>
+                <div class="input">
+                    <input class="in" type="submit" onChange="this.form.submit()" name="logout" value="Yes"/>
+                    <input class="out" type="submit" onChange="this.form.submit()" name="logout" value="No"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

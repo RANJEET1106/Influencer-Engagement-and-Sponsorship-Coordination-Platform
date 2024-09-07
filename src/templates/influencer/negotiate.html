@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negotiate</title>
+</head>
+<body>
+    <h1>Negotiate</h1>
+    <form action="/influencer/ad_request/negotiate/{{ad_request.id}}" method="POST">
+        <h2>Ad Request ID: {{ ad_request.id }}</h2>
+        <p>
+            <strong>Campaign ID:</strong> {{ ad_request.campaign_id }}
+            <a href="/influencer/campaign/view/{{ad_request.campaign_id}}">View Campaign</a> 
+        </p>
+        <p>
+            <strong>Sponsor ID:</strong> {{ ad_request.sponsor_id }}
+        </p>
+        <p>
+            <strong>Influencer ID:</strong> {{ ad_request.influencer_id }}
+        </p>
+        <p><strong>Messages:</strong> {{ ad_request.messages }}</p>
+        <p><strong>Requirements:</strong> {{ ad_request.requirements }}</p>
+        <p><strong>Payment Amount:</strong> ${{ ad_request.payment_amount }}</p>
+        <label for="negotiation_amount">Enter the negotiation amount:</label>
+        <input type="number" id="negotiation_amount" name="negotiation_amount" />
+        <p><strong>Date: </strong>{{ ad_request.date }}</p>
+        <p><strong>Status:</strong> {{ ad_request.status }}</p>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

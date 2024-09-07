@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campaign</title>
+</head>
+<body>
+    <h1>Edit Campaign</h1>
+    <form action="/sponsor/campaign/edit/{{campaign.id}}" method="POST">
+        <div>
+            <lable for="id">Campaign ID</lable>
+            <input type="number" id="id" name="id" value="{{campaign.id}}" disabled><br><br>
+        </div>
+        <div>
+            <label for="name">Campaign Name:</label>
+            <input type="text" id="name" name="name" value="{{ campaign.name }}" required><br><br>
+        </div>
+        <div>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50" required>{{ campaign.description }}</textarea><br><br>
+        </div>
+        <div>
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" value="{{ campaign.start_date }}" required><br><br>
+        </div>
+        <div>
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" value="{{ campaign.end_date }}" required><br><br>
+        </div>
+        <div>
+            <label for="budget">Budget:</label>
+            <input type="number" id="budget" name="budget" value="{{ campaign.budget }}" required><br><br>
+        </div>
+        <div>
+            <label for="visibility">Visibility:</label>
+            <select id="visibility" name="visibility" required>
+                <option value="private" {% if campaign.visibility == 'private' %} selected {% endif %}>Private</option>
+                <option value="public" {% if campaign.visibility == 'public' %} selected {% endif %}>Public</option>
+            </select><br><br>
+        </div>
+        <button type="submit">Update Campaign</button>
+    </form>
+</body>
+</html>

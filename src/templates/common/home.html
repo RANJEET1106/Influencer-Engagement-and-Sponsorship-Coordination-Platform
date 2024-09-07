@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        {% if message%}
+        <p><strong>{{message}}</strong></p>
+        {% endif%}
+
+        <h1>Login</h1>
+        <form action="/" method="POST" id="home">
+            <!-- <div>
+                <select name="filter">
+                    <option value="admin">Admin</option>
+                    <option value="influencer">Influencer</option>
+                    <option value="sponsor">Sponsor</option>
+                </select>
+            </div> -->
+            <div>
+                <input type="text" name="username" placeholder="Enter your Username" required />
+            </div>
+            
+            <div>
+                <input type="password" name="password" placeholder="Enter your Password" required />
+            </div>    
+            {% if error%}
+            <p><strong>{{error}}</strong></p>
+            {% endif%}
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    <div>
+        <h2>Don't Have Account ?? Create One</h2>
+        <a href="/register">Register</a>
+    </div>
+</body>
+</html>

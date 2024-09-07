@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Request Details</title>
+</head>
+
+<body>
+    <h1>Ad Request Details</h1>
+    
+    <div>
+        <h2>Ad Request ID: {{ ad_request.id }}</h2>
+        <p>
+            <strong>Campaign ID:</strong> {{ ad_request.campaign_id }}
+            <a href="/influencer/campaign/view/{{ad_request.campaign_id}}">View Campaign</a> 
+        </p>
+        <p>
+            <strong>Sponsor ID:</strong> {{ ad_request.sponsor_id }}
+        </p>
+        <p>
+            <strong>Influencer ID:</strong> {{ ad_request.influencer_id }}
+
+        <p><strong>Messages:</strong> {{ ad_request.messages }}</p>
+        <p><strong>Requirements:</strong> {{ ad_request.requirements }}</p>
+        <p><strong>Payment Amount:</strong> ${{ ad_request.payment_amount }}</p>
+        {% if negotiation_status == 'Requested' %}
+        <p><strong>Negotiation Amount:</strong>{{ad_request.negotiation_amount}}</p>
+        {% endif %}
+        <p><strong>Date: </strong>{{ ad_request.date }}</p>
+        <p><strong>Status:</strong> {{ ad_request.status }}</p>
+    </div>
+
+    {% if ad_request.status == 'Accepted' or ad_request.status== 'Rejected' %}
+        <a href="/influencer/ad_request">Go Back</a>
+    {% elif ad_request.request_to == 'Sponsor' %}
+        <a href="/influencer/ad_request/view/{{ ad_request.id }}">View</a>
+        <a href="/influencer/ad_request/cancel/{{ ad_request.id }}">Cancel</a>
+
+    {% elif ad_request.request_to == 'Influencer' %}
+        <a href="/influencer/ad_request/view/{{ ad_request.id }}">View</a>
+        <a href="/influencer/ad_request/accept/{{ ad_request.id }}">Accept</a>
+        <a href="/influencer/ad_request/negotiate/{{ ad_request.id }}">Negotiate</a>
+        <a href="/influencer/ad_request/reject/{{ ad_request.id }}">Reject</a>
+
+    {% elif negotiation_status == 'Requested' %}
+        <a href="/influencer/ad_request">Go Back</a>
+
+    {% endif %}
+
+</body>
+
+</html>

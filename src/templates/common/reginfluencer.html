@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<body>
+    <div>
+        <h1>Influencer Registration</h1>
+        <form action="/reginfluencer" method="POST" id="reginfluencer">
+            <div>
+                <input type="text" name="username" value="{{username}}" required />
+            </div>
+            <div>
+                <input type="password" name="password" value="{{password}}" required />
+            </div>
+            <div>
+                <input type="password" name="repassword" value="{{repassword}}" required />
+            </div>
+            <div>
+                <input type="text" name="name" placeholder="Enter Your Name" required />
+            </div>
+            <div>
+                <input type="text" name="category" placeholder="Enter Your Category" required />
+                <input type="text" name="niche" placeholder="Enter Specific Field Related To You" required />
+            </div>
+            <div>
+                <input type="text" name="ytlink" placeholder="Enter YouTude Channel URL" />
+                <input type="number" name="ytfollow" placeholder="YouTube Channel Subscribers" />
+            </div>
+            <div>
+                <input type="text" name="instalink" placeholder="Enter Instagram Account URL" />
+                <input type="number" name="instafollow" placeholder="Instagram Account Followers" />
+            </div>
+            <div>
+                <input type="text" name="twitterlink" placeholder="Enter Twitter Account URL" />
+                <input type="number" name="twitterfollow" placeholder="Twitter Account Followers" />
+            </div>
+            {% if error%}
+            <p><strong>{{error}}</strong></p>
+            {% endif%}
+            <div>
+                <a href="\register">Go Back</a>
+                <input type="submit" value="Submit"/>
+            </div>
+        </form>
+    </div>   
+</body>
+</html>

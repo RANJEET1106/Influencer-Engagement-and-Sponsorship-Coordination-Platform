@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <a href="/admin/dashboard" >Info</a>
+        <a href="/admin/find">Find</a>
+        <a href="/admin/stats">Stats</a>
+        <a href="/logout">Logout</a>
+        <h1>Welcome {{user.username}}</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Ongoing Campaigns</h2>
+                <div>
+                    {% for campaign in ongoing_campaigns %}
+                        <p>
+                            {{ campaign.id }} | {{ campaign.name }}  
+                            <a href="/admin/campaign/view/{{campaign.id}}">View</a>
+                            <a href="/admin/campaign/flag/{{campaign.id}}">Flag</a>
+                        </p>
+                    {% endfor %}
+                </div>
+        
+        <section>
+            <h2>Flagged Campaigns</h2>
+                <div>
+                    {% for campaign in flagged_campaigns %}
+                        <p>
+                            {{ campaign.id }} | {{ campaign.name }} 
+                            <a href="/admin/campaign/view/{{campaign.id}}">View</a>
+                            <a href="/admin/campaign/flag/{{campaign.id}}">Unflag</a>
+                            <a href="/admin/campaign/remove/{{campaign.id}}">Remove</a>
+                        </p>
+                    {% endfor %}
+                </div>
+        </section>
+        
+        <section>
+            <h2>Flagged Users</h2>
+                <div>
+                    {% for user in flagged_users %}
+                    <tr>
+                        <p>
+                            {{ user.id }} | {{ user.username }}
+                            <a href="/admin/user/view/{{user.id}}">View</a>
+                            <a href="/admin/user/flag/{{user.id}}">Unflag</a>
+                            <a href="/admin/user/remove/{{user.id}}">Remove</a>
+                        </p>
+                    {% endfor %}
+                </div>
+        </section>
+    </main>
+</body>
+</html>

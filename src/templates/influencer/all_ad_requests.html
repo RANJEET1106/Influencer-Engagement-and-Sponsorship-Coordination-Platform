@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Ad Requests</title>
+</head>
+
+<body>
+    <div>
+        <a href="/influencer/dashboard">Dashboard</a>
+        <a href="/influencer/find">Campaigns</a>
+        <a href="/influencer/ad_request">Ad Request</a>
+        <a href="/influencer/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <h1>Ad Requests</h1>
+
+    <!-- Filter Form -->
+    <form action="/influencer/ad_request" method="POST">
+        <div>
+            <label for="type">Type:</label>
+            <select name="type" id="type">
+                <option value="all" {% if type=='all' %}selected{% endif %}>All</option>
+                <option value="sent" {% if type=='sent' %}selected{% endif %}>Sent</option>
+                <option value="received" {% if type=='received' %}selected{% endif %}>Received</option>
+                <option value="negotiation" {% if type=='negotiation' %}selected{% endif %}>Negotiation</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="status">Status:</label>
+            <select name="status" id="status">
+                <option value="all" {% if status=='all' %}selected{% endif %}>Any</option>
+                <option value="pending" {% if status=='pending' %}selected{% endif %}>Pending</option>
+                <option value="accepted" {% if status=='accepted' %}selected{% endif %}>Accepted</option>
+                <option value="rejected" {% if status=='rejected' %}selected{% endif %}>Rejected</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Filter">
+    </form>
+
+    <!-- Display Ad Requests -->
+    <h2>Ad Requests</h2>
+    <ul>
+        {% for ad_request in ad_requests %}
+        <li>
+            <p><strong>ID:</strong> {{ ad_request.id }}</p>
+            <p>
+                <strong>Campaign ID:</strong> {{ ad_request.campaign_id }}
+                <strong>Influencer ID:</strong> {{ ad_request.influencer_id }}
+            </p>
+            <p>
+                <strong>Messages:</strong> {{ ad_request.messages }}
+                <strong>Requirements:</strong> {{ ad_request.requirements }}
+            </p>
+            <p>
+                <strong>Payment Amount:</strong> {{ ad_request.payment_amount }}
+                <strong>Status:</strong> {{ ad_request.status }}
+                <strong>Date:</strong> {{ad_request.date}}
+            </p>
+
+            {% if ad_request.status == 'Accepted' or ad_request.status== 'Rejected' %}
+                <a href="/influencer/ad_request/view/{{ ad_request.id }}">View</a>
+            {% elif ad_request.request_to == 'Sponsor' %}
+                <a href="/influencer/ad_request/view/{{ ad_request.id }}">View</a>
+                <a href="/influencer/ad_request/cancel/{{ ad_request.id }}">Cancel</a>
+
+            {% elif ad_request.request_to == 'Influencer' %}
+                <a href="/influencer/ad_request/view/{{ ad_request.id }}">View</a>
+                <a href="/influencer/ad_request/accept/{{ ad_request.id }}">Accept</a>
+                <a href="/influencer/ad_request/negotiate/{{ ad_request.id }}">Negotiate</a>
+                <a href="/influencer/ad_request/reject/{{ ad_request.id }}">Reject</a>
+            {% endif %}
+            
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

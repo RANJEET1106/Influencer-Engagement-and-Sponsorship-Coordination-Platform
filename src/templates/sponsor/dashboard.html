@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+</head>
+<body>
+    <div>
+        <a href="/sponsor/dashboard" >Profile</a>
+        <a href="/sponsor/campaign">Campaigns</a>
+        <a href="/sponsor/find">Influencers</a>
+        <a href="/sponsor/ad_request">Ad Requests</a>
+        <a href="/sponsor/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div>
+        <h1>Welcome {{username}}</h1>
+    </div>
+    <div>
+        <h4>Active Campaigns</h4>
+        {% for campaign in campaigns %}
+        <div>
+            <p>{{campaign[0]}} | {{campaign[1]}}  <a href="/sponsor/campaign/view/{{campaign[0]}}">View</a></p>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <h4>Ad Request</h4>
+        {% for add in ad_requests %}
+        <div>
+            <p>{{add[0]}} | {{add[1]}}  <a href="/sponsor/ad_request/view/{{add[0]}}">View</a></p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

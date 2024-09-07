@@ -1,0 +1,96 @@
+<!-- templates/influencers.html -->
+
+<!-- influencers.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencers</title>
+</head>
+<body>
+    <div>
+        <a href="/sponsor/dashboard">Profile</a>
+        <a href="/sponsor/campaign">Campaigns</a>
+        <a href="/sponsor/find">Influencers</a>
+        <a href="/sponsor/ad_request">Ad Requests</a>
+        <a href="/sponsor/stats">Stats</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div>
+        <h1>All Influencers</h1>
+
+        <form action="/sponsor/find" method="POST" id="filter_form">
+
+            <label for="search">Search:</label>
+            <input type="text" name="search" placeholder="Enter Name of Influencer" value="{{search}}">
+            <br>
+
+            <label for="category">Category:</label>
+            <select name="category">
+                <option value="">Any</option>
+                <option value="Fashion" {% if category == 'Fashion' %}selected{% endif %}>Fashion</option>
+                <option value="Food" {% if category == 'Food' %}selected{% endif %}>Food</option>
+                <option value="Travel" {% if category == 'Travel' %}selected{% endif %}>Travel</option>
+            </select>
+            
+            <label for="niche">Niche:</label>
+            <select name="niche">
+                <option value="">Any</option>
+                <option value="Luxury Fashion" {% if niche == 'Luxury Fashion' %}selected{% endif %}>Luxury Fashion</option>
+                <option value="Streetwear" {% if niche == 'Streetwear' %}selected{% endif %}>Streetwear</option>
+                <option value="Beauty" {% if niche == 'Beauty' %}selected{% endif %}>Beauty</option>
+            </select>
+            <br>
+
+            <label for="min_yt_followers">Minimum YouTube Followers:</label>
+            <input type="number" name="min_yt_followers" min="0" value="{{ min_yt_followers }}">
+
+            <label for="max_yt_followers">Maximum YouTube Followers:</label>
+            <input type="number" name="max_yt_followers" min="0" value="{{ max_yt_followers }}">
+            <br>
+
+
+            <label for="min_insta_followers">Minimum Instagram Followers:</label>
+            <input type="number" name="min_insta_followers" min="0" value="{{ min_insta_followers }}">
+            
+            <label for="max_insta_followers">Maximum Instagram Followers:</label>
+            <input type="number" name="max_insta_followers" min="0" value="{{ max_insta_followers }}">
+            <br>
+
+
+            <label for="min_twitter_followers">Minimum Twitter Followers:</label>
+            <input type="number" name="min_twitter_followers" min="0" value="{{ min_twitter_followers }}">
+            
+            <label for="max_twitter_followers">Maximum Twitter Followers:</label>
+            <input type="number" name="max_twitter_followers" min="0" value="{{ max_twitter_followers }}">
+            <br>
+
+
+            <input type="submit" value="Apply Filters">
+        </form>
+
+        <!-- List of influencers -->
+        <ul>
+            {% for influencer in influencers %}
+            <li>
+                <p>Name: {{ influencer.name }}</p>
+                <p>Category: {{ influencer.category }}   Niche: {{ influencer.niche }}</p>
+                <p>
+                    Followers : 
+                    YouTube : {{ influencer.ytfollow }}  
+                    Instagram : {{ influencer.instafollow }}
+                    Twitter : {{ influencer.twitterfollow }}</p>
+                <p>Average Cost: {{ influencer.avgcost }}   Count: {{ influencer.count }}</p>
+                <p>
+                    <a href="/sponsor/influencer/view/{{ influencer.id }}">View Profile</a>
+                    <a href="/sponsor/influencer/ad_request/create/{{ influencer.id }}">Put Request</a>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
